@@ -1,0 +1,19 @@
+keytool -genkey -alias ime1private -keystore ime1.private -storetype JKS -keyalg rsa -dname "CN=Ime 1" -storepass 123456 -keypass 123456 -validity 365
+keytool -genkey -alias ime2private -keystore ime2.private -storetype JKS -keyalg rsa -dname "CN=Ime 2" -storepass 123456 -keypass 123456 -validity 365
+keytool -genkey -alias ime3private -keystore ime3.private -storetype JKS -keyalg rsa -dname "CN=Ime 3" -storepass 123456 -keypass 123456 -validity 365
+
+keytool -genkey -alias serverprivate -keystore server.private -storetype JKS -keyalg rsa -dname "CN=localhost" -storepass 123456 -keypass 123456 -validity 365
+
+
+keytool -export -alias ime1private -keystore ime1.private -file izbrisi-me-1.key -storepass 123456
+keytool -import -noprompt -alias ime1public -keystore clients.public -file izbrisi-me-1.key -storepass 123456
+
+keytool -export -alias ime2private -keystore ime2.private -file izbrisi-me-2.key -storepass 123456
+keytool -import -noprompt -alias ime2public -keystore clients.public -file izbrisi-me-2.key -storepass 123456
+
+keytool -export -alias ime3private -keystore ime3.private -file izbrisi-me-3.key -storepass 123456
+keytool -import -noprompt -alias ime3public -keystore clients.public -file izbrisi-me-3.key -storepass 123456
+
+
+keytool -export -alias serverprivate -keystore server.private -file izbrisi-me-4.key -storepass 123456
+keytool -import -noprompt -alias serverpublic -keystore server.public -file izbrisi-me-4.key -storepass 123456
